@@ -1,0 +1,1 @@
+You need geokit and tweetstream, both are gems. Edit config.yml according to instructions there. 
