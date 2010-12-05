@@ -12,35 +12,62 @@ written by Kate Starbird, as well as the beginnings of a rewrite by the RHoK
    http://wiki.rhok.org/Tweak_the_Tweet_-_user_testing
 
 
-Original code (in legacy):  
+Original code (in folder legacy):  
 The original Tweak the Tweet architecture is partitioned into a process that
-records relevant tweets and a process that parses and publishes the recorded
-tweets.
+records relevant tweets (in a MySQL database) and a process that parses and
+publishes the recorded tweets.
 
-	TtT_collection.py   - Listens to tweets that match certain keywords
-												and records them in a database along with tweet
-                        metadata (location information, and user info).
-	parse-legacy.rb     - Parses tweets from the database according to the Tweak
-												the Tweet syntax and publishes them on the web
+  TtT_collection.py:   
+    Listens to tweets that match certain keywords and records them in a
+    database along with tweet metadata (location information, and user info).
 
-RHoK 2.0 Toronto Rewrite: 
-	db.rb
-	processtweets.rb
-	library.rb
-	config.yml
-	mainparse.rb
-	dumpstream.rb
-	filelib.rb
-	testdump.rb
+  parse-legacy.rb     
+    Parses tweets from the database according to the Tweak the Tweet syntax and
+    publishes them on the web
 
+RHoK 2.0 Toronto Rewrite (in root of repo): 
+Similarly to the original architecture, one script polls for tweets
+(dumptweets.rb), and another processes the tweets (processdump.rb).  Rather
+than storing tweets in a database, filelib handles marshalling and
+unmarshalling tweet data from files. 
+
+  Core
+  ----
+  dumptweets.rb 
+    Listen for relevant tweets and record them. 
+
+  processdump.rb
+    Parse recorded tweets and ... <tbd>
+
+  config.yml
+    Configuration data (twitter account, etc..) 
+
+  File marshalling 
+  ----------------
+
+  filelib.rb 
+    This is a small module for writing random data to files regularly, and then
+    reading these files. 
+
+  testdump.rb
+    Tests the marshalling of tweet data to file. 
+
+  testread.rb  
+    Tests the unmarshalling the tweet data from files
+
+  library.rb   
+    Common functions
+
+The folder archive_of_past_attempts/ contains odds and ends currently stashed
+and may be useful.
 
 Installation
 ------------
-
 - You need geokit and tweetstream, both are ruby gems. 
-	gem install geokit tweetstream
-- You need the following python modules: 
-	tweepy
+  gem install geokit tweetstream
+
+- You need the following python modules to run the legacy code: 
+  tweepy
 
 - Edit config.yml according to instructions there. 
 
@@ -48,27 +75,29 @@ Installation on Linux:
  * Check out the tweak the tweet sources from GitHub
  * Install the ruby gems geokit and tweetstream
 
-   $ sudo gem install geokit tweetstream
+      $ sudo gem install geokit tweetstream
    
    On Ubuntu 10.10 I get the following error: 
       Building native extensions.  This could take a while...
       ERROR:  Error installing tweetstream:
       ERROR: Failed to build gem native extension.
 
-		/usr/bin/ruby1.8 extconf.rb
-		extconf.rb:1:in `require': no such file to load -- mkmf (LoadError)
-		from extconf.rb:1
+    /usr/bin/ruby1.8 extconf.rb
+    extconf.rb:1:in `require': no such file to load -- mkmf (LoadError)
+    from extconf.rb:1
 
    I needed to run and then reinstall: 
-	$ sudo apt-getinstall ruby1.8-dev
-	$ sudo gem install tweetstream 
+      $ sudo apt-getinstall ruby1.8-dev
+      $ sudo gem install tweetstream 
  
  * Other gems I needed to install    
-	$ sudo gem install json 
+      $ sudo gem install json 
 
  * For the python modules: 
-	$ sudo easy_install tweepy
+      $ sudo easy_install tweepy
 
+
+Other developer notes: 
 
 example of the data that comes from a Tweet:
 
