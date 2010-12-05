@@ -7,7 +7,7 @@ require 'filelib'
 require 'filelib'
 dumper = Filelib::Dumper.new(1)
 
-TweetStream::Client.new(@conf['name'], @conf['password']).sample do |s|
+TweetStream::Client.new(@conf['name'], @conf['password']).track('ttt_test2') do |s|
   dumper.add_to_cache(s)
   puts "#{s.user.name}: #{s.text}"
 end

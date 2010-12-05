@@ -13,6 +13,7 @@ module Filelib
     
     def flush
       File.open("data/#{Time.now.to_i.to_s}",'w') { |f| Marshal.dump(@cache, f) }
+      File.open("data2/#{Time.now.to_i.to_s}",'w') { |f| Marshal.dump(@cache, f) }
       puts "="
     end
 
@@ -33,7 +34,6 @@ module Filelib
 
   class Reader
     def readchunk
-      puts Dir.entries("data/")[2]
       file = "data/" + Dir.entries("data/")[2]
       content = Marshal.load(File.read(file))
       FileUtils::rm(file)
