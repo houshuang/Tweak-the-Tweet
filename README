@@ -1,5 +1,41 @@
+Welcome
+=======
+
+Code overview
+-------------
+In this section we'll attempt to describe the current code and how it fits
+together.
+
+At the moment the code base consists of the original Tweak The Tweet code as
+written by Kate Starbird, as well as the beginnings of a rewrite by the RHoK
+2.0 Toronto team: 
+   http://wiki.rhok.org/Tweak_the_Tweet_-_user_testing
+
+
+Original code (in legacy):  
+The original Tweak the Tweet architecture is partitioned into a process that
+records relevant tweets and a process that parses and publishes the recorded
+tweets.
+
+	TtT_collection.py   - Listens to tweets that match certain keywords
+												and records them in a database along with tweet
+                        metadata (location information, and user info).
+	parse-legacy.rb     - Parses tweets from the database according to the Tweak
+												the Tweet syntax and publishes them on the web
+
+RHoK 2.0 Toronto Rewrite: 
+	db.rb
+	processtweets.rb
+	library.rb
+	config.yml
+	mainparse.rb
+	dumpstream.rb
+	filelib.rb
+	testdump.rb
+
+
 Installation
-============
+------------
 
 - You need geokit and tweetstream, both are ruby gems. 
 	gem install geokit tweetstream
