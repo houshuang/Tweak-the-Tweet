@@ -7,6 +7,7 @@ module DB
   end 
 
   already = File.exists?("database.db")
+  ActiveRecord::Base.allow_concurrency = true
   ActiveRecord::Base.establish_connection(
   :adapter  => 'sqlite3',
   :database => 'database.db'
@@ -18,6 +19,9 @@ module DB
       create_table :tweets do |table|
         table.column :text, :string
         table.column :user, :string
+      end
+      create_table :howfar do |table|
+        table.column :number, :number
       end
     end
 

@@ -1,11 +1,9 @@
 require 'rubygems'
-require 'tweetstream'  
 require 'yaml'
+require 'tweetstream'  
 
-# local parts
-require 'library'     # utility functions
+# local libraries
 require 'db'          # connecting to database, creating if it doesn't exist already
-
 @conf = YAML::load(File.read("config.yml"))
 
 TweetStream::Client.new(@conf['name'], @conf['password']).sample do |s|
