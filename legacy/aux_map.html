@@ -1,0 +1,452 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Tweak the Tweet Map</title>    
+    
+    <style type="text/css">
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        font-family: Arial, sans-serif;
+      }
+
+      #wrapper {
+        width: 100%;
+        height: 90%;
+        margin: 0 auto;
+        position: absolute;
+        top:102;
+        left:0;
+      }
+      
+      #title_wrapper {
+        position:absolute;
+        top:0;
+        left:0;
+        margin: 0 auto;
+        width:100%;
+        height:100px;
+        padding-top: 0px;
+      }
+
+      #r_wrapper {
+      position:relative;
+      float: right;
+      height: 86%;
+      width: 74%;
+      padding-top:0px; margin:0;
+      }
+      
+      #follow_wrapper {
+      position:absolute;
+      float: right;
+      bottom:0;
+      height: 5%;
+      width: 100%;
+      background-color:rgb(10,10,50);
+      layer-background-color:rgb(10,10,50);
+      }
+
+      #map {
+      float: right;
+      right: 3px;
+      height: 100%;
+      width: 100%;
+      }
+
+      #key-title {
+        width: 100%;
+        height:20px;
+        margin: 0 auto;
+      }
+
+      #key {
+        height: 86%;
+        width: 24%;
+        background-color:rgb(255,255,245);
+        layer-background-color:rgb(255,255,245);
+        float: left;
+      }
+      
+      #links {
+        height: 25%;
+        width: 100%;
+      }
+      
+      .imageBox {
+        height:100px;
+        position:absolute;
+        top:0;
+        left:100px;
+        right:100px;
+        background-image:url("http://www.cs.colorado.edu/~starbird/oilreport_title_background_100.jpg");
+      }
+      
+      img.floatLeftClear{ 
+      float: left; 
+      width: 1.83em;
+      clear: left; 
+      margin: 3px; 
+      }
+      
+      .class_title A:link {text-decoration: none; color: black;}
+      .class_title A:visited {text-decoration: none; color: black;}
+      .class_title A:active {text-decoration: none; color: black;}
+      .class_title A:hover {text-decoration: underline; color: grey;}
+      
+    </style>   
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=ABQIAAAA3_ptB1FWu71XAZ2uvX56jxTitDs_wXMAyd7lJtsfEtuHb5KV_BRoBiBDucsqLGhFtZuuVL-ObK0jWA" type="text/javascript"></script>
+
+  </head>
+  <body onLoad="displayResults()" onunload="GUnload()">
+
+    
+  <div id="title_wrapper" style="border-bottom: black 2px solid; border-top: black 2px solid;">        
+    <div class="imageBox">        
+        <p style="text-align:center; font-size:24px; color:rgb(255,255,245); font:Copperplate; font-weight: bold; padding-top:8px; margin:0; line-height:40pt;"> Map of TtT tweets for User-Testing / RHOK <br></p>
+        <p style="text-align:center;  font-size:16px; color:white; margin:0; line-height:36pt;">Map by Type&nbsp;&nbsp;&nbsp;
+        <span class="class_title">
+          <a href="http://www.cs.colorado.edu/~starbird/aux_time.html">Map by Time</a>&nbsp;&nbsp;&nbsp;
+          <a href="https://spreadsheets.google.com/ccc?key=0AkuhimfFYZrOdG9XN1FDbmxnRlcwVFRraFZ6M0o3Tnc&hl=en#gid=0">Spreadsheet</a>&nbsp;&nbsp;&nbsp;
+          <a href="http://www.cs.colorado.edu/~starbird/aux_instructions.html">Instructions for Tweeting</a>&nbsp;&nbsp;&nbsp;
+          <a href="http://epic.cs.colorado.edu/">Project EPIC</a>&nbsp;&nbsp;&nbsp;
+        <a href="http://www.cs.colorado.edu/~starbird/blog/">Tweak the Tweet</a>&nbsp;&nbsp;&nbsp;
+
+        </span>
+        </p>
+    </div>
+
+    <img src="http://www.cs.colorado.edu/~starbird/pkfloods_icon_2.jpg" width="100" height="100" ALIGN=left>
+    <img src="http://www.cs.colorado.edu/~starbird/pkfloods_icon_2.jpg" width="100" height="100" ALIGN=right>
+  </div>
+  
+  <div id="wrapper" style="border: white 3px solid;">
+    <div id="key" style="border: black 3px solid;">
+      
+        <div id="key_title" style="border-bottom: black 2px solid;">
+
+          <p style="text-align:center; font-size:16px; color:rgb(255,255,245); background-color:rgb(10,10,50); layer-background-color:rgb(10,10,50); font-weight: bold; margin:0;line-height:22pt;font-size:16pt;">Key</p>
+        </div>
+        <br/>
+         <table> 
+        	<tr>
+        		<td><img src="http://www.cs.colorado.edu/~starbird/icon_brown.png" class="floatLeftClear"></td>
+        		<td><p style="font-size:18px;">Damage</p></td>
+        	</tr>
+                <tr>
+        		<td><img src="http://www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png" class="floatLeftClear"></td>
+        		<td><p style="font-size:18px;">Trapped</p></td>
+        	</tr>
+                <tr>
+        		<td><img src="http://www.cs.colorado.edu/~starbird/icon_orange.png" class="floatLeftClear"></td>
+        		<td><p style="font-size:18px;">Injury</p></td>
+        	</tr>
+                <tr>
+        		<td><img src="http://www.cs.colorado.edu/~starbird/icon_white.png" class="floatLeftClear"></td>
+        		<td><p style="font-size:18px;">Missing Person Report</p></td>
+        	</tr>
+        	<tr>
+        		<td><img src="http://www.cs.colorado.edu/~starbird/icon_green.png" class="floatLeftClear"></td>
+        		<td><p style="font-size:18px;">Shelter</p></td>
+        	</tr>
+                <tr>
+        		<td><img src="http://www.cs.colorado.edu/~starbird/icon_yellow.png" class="floatLeftClear"></td>
+        		<td><p style="font-size:18px;">Need</p></td>
+        	</tr>
+                <tr>
+        		<td><img src="http://www.cs.colorado.edu/~starbird/icon_blue.png" class="floatLeftClear"></td>
+        		<td><p style="font-size:18px;">Offer</p></td>
+        	</tr>       
+        	<tr>
+        		<td><img src="http://www.cs.colorado.edu/~starbird/icon_black.png" class="floatLeftClear"></td>
+        		<td><p style="font-size:18px;">Service Disruption</p></td>
+        	</tr>
+        	<tr>
+        		<td><img src="http://www.cs.colorado.edu/~starbird/icon_grey.png" class="floatLeftClear"></td>
+        		<td><p style="font-size:18px;">Road Conditions</p></td>
+        	</tr>
+
+        	<tr>
+        		<td><img src="http://www.google.com/intl/en_us/mapfiles/ms/micons/purple-dot.png" class="floatLeftClear"></td>
+        		<td><p style="font-size:18px;">Other</p></td>
+        	</tr>
+
+        </table>
+
+    </div>
+    
+    <div id="r_wrapper">
+      <div id="map" style="border:black 3px ridge; line-height:12pt;font-size:12pt;"></div>     
+    </div>
+    
+  </div>
+
+  <div id="follow_wrapper" style="border: white 2px solid;">
+
+      <p style="text-align:center; font-size:16px; color:grey; margin:0; line-height:22pt;">Follow @epiccolorado for more instructions and retweeted reports</p>
+  </div>
+
+   <noscript><b>JavaScript must be enabled in order for you to use Google Maps.</b> 
+      However, it seems JavaScript is either disabled or not supported by your browser. 
+      To view Google Maps, enable JavaScript by changing your browser options, and then 
+      try again.
+   </noscript>
+ 
+    <script type="text/javascript">
+ 
+ var g_column_number = 19
+ 
+ /**
+ * Lists the entries from the specified JSON feed
+ * by creating a new 'dl' element in the DOM.
+ * Each 'dt' is the title of the row, and each 'dd' 
+ * is the content of the row. 
+ */
+function listEntries(json) {
+  
+  
+}
+
+var formatDate = function (aDate) {
+  
+        var months = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+        var yyyy = aDate.getFullYear();
+        var m = aDate.getMonth();
+        var mm = m < 10 ? "0" + m : m;
+        var mmm = months[m];
+        
+        var d = aDate.getDate();
+        var dd = d < 10 ? "0" + d : d;
+ 
+        var h = aDate.getHours();
+        var hh = h < 10 ? "0" + h : h;
+        var n = aDate.getMinutes();
+        var nn = n < 10 ? "0" + n : n;
+        var s = aDate.getSeconds();
+        var ss = s < 10 ? "0" + s : s;
+ 
+        return mmm + " " + d + ", " + yyyy + " " + hh + ":" + nn + ":" + ss;
+
+}
+
+function setMarkerColor(color) {
+  // Create our "tiny" marker icon
+  var colorIcon = new GIcon(G_DEFAULT_ICON);
+  colorIcon.image = "http://www.cs.colorado.edu/~starbird/icon_" + color + ".png";
+                
+  // Set up our GMarkerOptions object
+  markerOptions = { icon:colorIcon };
+
+  return markerOptions;
+}
+
+function cellEntries(json) {
+
+  var tr;
+  var col = 0;
+  var row = 0;
+  var rows = new Array();
+  
+  for (var i=0; i < json.feed.entry.length; i++) {
+    if (col == g_column_number) {
+        col = 0;
+        row += 1;
+    }
+    
+    if (col == 0) {
+        rows[row] = new Array();
+    }
+
+    var entry = json.feed.entry[i];
+    rows[row][col] = entry.content.$t
+    
+    col += 1;
+
+  }
+  
+  currentDate = new Date();
+  var one_day=1000*60*60*24;
+
+  for (var x=row; x>0; x--) {
+
+      if ((rows[x][7] != 'NA') && (rows[x][8] != 'NA')) {
+
+        date_str = rows[x][2];
+        myDate = new Date(date_str);
+        fixDate = myDate;            // adjust time - but not sure why - to GMT?
+       
+        str = '<p><b>Author: </b>@' + rows[x][11] + '</p><p><b>Time: </b>' + formatDate(fixDate) + ' EST</p>';
+        
+        str += '<p><b>Report Type: </b>' + rows[x][0] + '</p>';
+        if (rows[x][1] != 'NA') {
+            str += '<p><b>Report: </b>' + rows[x][1] + '</p>';
+        }
+        
+        if (rows[x][3] != 'NA') {
+          str += '<p><b>Location: </b>' + rows[x][3] + '</p>';
+        }
+        
+        if (rows[x][4] != 'NA') {
+          str += '<p><b>Source: </b>' + rows[x][10] + '</p>';
+        }
+        
+        str += '<p><b>Tweet: </b>' + rows[x][12] + '</p>';
+        
+        if (rows[x][9] != 'NA') {
+            str += '<p><b>Pic: </b><a href="' + rows[x][9] + '" target="_blank">' + rows[x][9] + '</a></p>';
+        }
+ 
+        if (date_str && date_str.length > 0) {       
+          dif = (currentDate.getTime() - myDate.getTime()) / one_day;
+          
+      //    if (dif <= 1) {
+            
+            report_type = rows[x][0]
+            
+            switch(report_type)
+              {
+                case "#damage":
+                  color = "brown";
+                  break;
+                case "#ruok":
+                  color = "white";
+                  break;
+                case "#missing":
+                  color = "white";
+                  break;
+                case "#imok":
+                  color = "white";
+                  break;
+                case "#trapped":
+                  color = "red";
+                  break;
+                case "#injury":
+                  color = "orange";
+                  break;
+                case "#injured":
+                  color = "orange";
+                  break;
+                case "#need":
+                  color = "yellow";
+                  break;
+                case "#shelter":
+                  color = "green";
+                  break;
+                case "#offer":
+                  color = "blue";
+                  break;
+                case "power":
+                  color = "black";
+                  break;
+                case "facility":
+                  color = "black";
+                  break;
+                case "road":
+                  color = "grey";
+                  break;
+                case "traffic":
+                  color = "grey";
+                  break;
+                case "#unspecified":
+                  color = "purple";
+                  break;
+                default:
+                  color = "purple";
+              }
+        
+            markerOptions = setMarkerColor(color);
+
+            var point = new GLatLng(parseFloat(rows[x][7]),parseFloat(rows[x][8]));
+            
+
+            
+            var marker = createMarker(point,'<div style="width:240px; font-size:12px">' + str + '<\/div>', markerOptions)
+            map.addOverlay(marker);
+         
+     //     }
+        }    
+      }
+      
+  }
+ 
+}
+
+/**
+ * Called when the user clicks the 'OK' button to
+ * retrieve a spreadsheet's JSON feed.  Creates a new 
+ * script element in the DOM whose source is the JSON feed, 
+ * and specifies that the callback function is 
+ * 'listEntries' for a list feed and 'cellEntries' for a
+ * cells feed (above).
+ */
+function displayResults() {
+
+  // Show a "Loading..." indicator. 
+
+  // Retrieve the JSON feed.
+  
+  var script = document.createElement('script');
+                                                                           
+    script.setAttribute('src', 'http://spreadsheets.google.com/feeds/cells/0AkuhimfFYZrOdG9XN1FDbmxnRlcwVFRraFZ6M0o3Tnc/od6/public/basic' +
+                        '?alt=json-in-script&callback=cellEntries');
+  
+  script.setAttribute('id', 'jsonScript');
+  script.setAttribute('type', 'text/javascript');
+  document.documentElement.firstChild.appendChild(script);
+  
+
+}
+
+/**
+ * Removes the script element from the previous result.
+ */
+function removeOldJSONScriptNodes() {
+  var jsonScript = document.getElementById('jsonScript');
+  if (jsonScript) {
+    jsonScript.parentNode.removeChild(jsonScript);
+  }
+}
+
+   
+    if (GBrowserIsCompatible()) { 
+
+      // A function to create the marker and set up the event window
+      // Dont try to unroll this function. It has to be here for the function closure
+      // Each instance of the function preserves the contends of a different instance
+      // of the "marker" and "html" variables which will be needed later when the event triggers.    
+      function createMarker(point,html,markerOptions) {       
+        var marker = new GMarker(point, markerOptions);
+        GEvent.addListener(marker, "click", function() {
+          marker.openInfoWindowHtml(html);
+        });
+        return marker;
+      }
+
+      // Display the map, with some controls and set the initial location 
+      var map = new GMap2(document.getElementById("map"));
+  //    map.setMapType(G_HYBRID_MAP);
+      map.addControl(new GLargeMapControl());
+      map.addControl(new GMapTypeControl());
+      map.setCenter(new GLatLng(35,-50),3);
+
+    }
+    
+    // display a warning if the browser was not compatible
+    else {
+      alert("Sorry, the Google Maps API is not compatible with this browser");
+    }
+
+    // This Javascript is based on code provided by the
+    // Community Church Javascript Team
+    // http://www.bisphamchurch.org.uk/   
+    // http://econym.org.uk/gmap/
+
+    //]]>
+    
+    
+    </script>
+  </body>
+
+</html>
