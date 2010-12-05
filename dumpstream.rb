@@ -11,5 +11,4 @@ require 'db'          # connecting to database, creating if it doesn't exist alr
 TweetStream::Client.new(@conf['name'], @conf['password']).sample do |s|
   DB::Tweet.create(:user => s.user.name, :text => s.text)
   puts "#{s.user.name}: #{s.text}"
-  pp s
 end
