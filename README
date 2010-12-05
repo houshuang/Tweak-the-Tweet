@@ -1,8 +1,10 @@
 Installation
 ============
 
-- You need geokit and tweetstream, both are gems. 
+- You need geokit and tweetstream, both are ruby gems. 
 	gem install geokit tweetstream
+- You need the following python modules: 
+	tweepy
 
 - Edit config.yml according to instructions there. 
 
@@ -22,11 +24,15 @@ Installation on Linux:
 		from extconf.rb:1
 
    I needed to run and then reinstall: 
-      $ sudo apt-getinstall ruby1.8-dev
-      $ sudo gem install tweetstream 
+	$ sudo apt-getinstall ruby1.8-dev
+	$ sudo gem install tweetstream 
  
  * Other gems I needed to install    
 	$ sudo gem install json 
+
+ * For the python modules: 
+	$ sudo easy_install tweepy
+
 
 example of the data that comes from a Tweet:
 
