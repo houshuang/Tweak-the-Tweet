@@ -10,8 +10,12 @@ module Filelib
     end
     
     def flush
-      File.open(Time.now.to_i.to_s,'w') { |f| Marshal.dump(obj, f) }
-      puts "."
+      File.open("data/#{Time.now.to_i.to_s}",'w') { |f| Marshal.dump(@cache, f) }
+      puts "="
+    end
+
+    def ensure_flush
+      flush
     end
 
     def add_to_cache(obj)
