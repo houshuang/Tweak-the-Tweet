@@ -13,12 +13,28 @@ from textwrap import TextWrapper
 import tweepy
 import re
 import pprint
-import MySQLdb
- 
-# Primary Filter, can be a comma seperated list.
+import sys
+
+#import MySQLdb
+
+class MockDB:
+    def commit():
+        print "MockDB: commit()"
+    def rollback():
+        print "MockDB: rollback()"
+    def close():
+        print "MockDB: close()"
+    
+    def execute(sql):
+        print "MockDB: execute(%s)" % sql 
+
+     
+# Primary Filter, can be a comma seperated list of hashtags.
 PRIMARY_TRACK_LIST = "#ttt_test"
 
 def get_place(st):
+    """Extract location info from the status message object"""
+
     place = ''
     place_url = ''
     box = []
@@ -41,6 +57,7 @@ def get_place(st):
     return place,place_url,box
     
 def get_coords(st):
+    '''Get geo coordinates from the Status object'''
     a = None
     b = None
     if st.geo:
@@ -55,6 +72,8 @@ def get_coords(st):
 
 
 class StreamWatcherListener(tweepy.StreamListener):
+    """A listener for events from tweepy"""
+
     status_wrapper = TextWrapper(width=70,
                                  initial_indent=' ',
                                  subsequent_indent=' ')
@@ -77,6 +96,8 @@ class StreamWatcherListener(tweepy.StreamListener):
         num = 0.0
         lat_num = 0.0
         long_num = 0.0
+     
+	# extract geo location information from the Status object
         if (not lat) and box and len(box) > 0:    
             for coord in box[0]:
                 print '%s, ' % coord
@@ -87,6 +108,7 @@ class StreamWatcherListener(tweepy.StreamListener):
                 lat = lat_num / num
                 long = long_num / num
         
+	# format the lat and long if we have it
         if lat and long:
             lat_s = '%f' % lat
             long_s = '%f' % long      
@@ -139,17 +161,19 @@ class StreamWatcherListener(tweepy.StreamListener):
  
 def main():   
  
-    username = # get a Twitter user name #
-    password = # get a Twitter password #
+    username = 'houshuang_disaster' # get a Twitter user name #
+    password = 'alabast' # get a Twitter password #
 
     global db
     global cursor
      
-    db = MySQLdb.connect (host = ##,
-        user = ##,
-        passwd = ##,
-        db = ##)
-    cursor = db.cursor ()
+    #db = MySQLdb.connect (host = ##,
+    #    user = ##,
+    #    passwd = ##,
+    #    db = ##)
+    #cursor = db.cursor ()
+    db = MockDB()
+    cursor = db 
     
     listener = StreamWatcherListener(username, password)
     stream = tweepy.Stream(username,
