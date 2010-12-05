@@ -1,4 +1,4 @@
-require 'filelib'
+require '../filelib'
 
 r = Filelib::Reader.new
 p r.morechunks?

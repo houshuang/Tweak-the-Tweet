@@ -1,4 +1,4 @@
-require 'filelib'
+require '../filelib'
 dumper = Filelib::Dumper.new(1)
 
 t = Time.now
