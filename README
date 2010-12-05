@@ -57,6 +57,12 @@ unmarshalling tweet data from files.
 
   library.rb   
     Common functions
+    
+  Others
+  ------
+  
+  twitter-examples.txt
+    This is a group of tweets that can be used for testing the parser. Feel free to add.
 
 The folder archive_of_past_attempts/ contains odds and ends currently stashed
 and may be useful.
