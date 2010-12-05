@@ -49,10 +49,10 @@ unmarshalling tweet data from files.
     This is a small module for writing random data to files regularly, and then
     reading these files. 
 
-  testdump.rb
+  test/testdump.rb
     Tests the marshalling of tweet data to file. 
 
-  testread.rb  
+  test/testread.rb  
     Tests the unmarshalling the tweet data from files
 
   library.rb   
