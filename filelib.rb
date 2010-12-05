@@ -1,5 +1,7 @@
 # functions for writing to marshal dump file and reading
 
+require 'fileutils'
+
 module Filelib
 
   class Dumper
@@ -15,17 +17,32 @@ module Filelib
     end
 
     def ensure_flush
-      flush
+      flush if @cache.size > 0
     end
 
     def add_to_cache(obj)
       @cache << obj
       if @t + @interval < Time.now
         @t = Time.now
-        flush
+        flush if @cache.size > 0
         @cache = Array.new
       end
     end
 
   end
+
+  class Reader
+    def readchunk
+      puts Dir.entries("data/")[2]
+      file = "data/" + Dir.entries("data/")[2]
+      content = Marshal.load(File.read(file))
+      FileUtils::rm(file)
+      return content
+    end
+    
+    def morechunks?
+      Dir.entries("data/").size > 2
+    end
+  end
+
 end

@@ -28,6 +28,15 @@ Installation on Linux:
  * Other gems I needed to install    
 	$ sudo gem install json 
 
+Filelib:
+- This is a small module for writing random data to files regularly, and then 
+  reading these files. This way, one script can be constantly pulling tweets,
+  and writing them to file, and another script can be reading these files and
+  processing the tweets, independently of each other. Right now there is 
+  filelib.rb with the module, and testdump.rb and testfilelib.rb, which 
+  are examples of implementing the library with dummy data (and which demonstrate
+  the usage)
+
 example of the data that comes from a Tweet:
 
 {:retweet_count=>nil,
