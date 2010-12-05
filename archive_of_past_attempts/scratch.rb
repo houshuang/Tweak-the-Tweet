@@ -1,3 +1,24 @@
+class Position          # simply keeps the position, by writing to an external file. state independent.
+  attr_reader :pos
+
+  def initialize
+    if File.exists?("position")
+      @pos = File.read("position").to_i
+    else
+      @pos = 0
+    end
+    @file = File.open('position','w')
+  end
+
+  def pos=(newpos)
+    @pos=newpos
+    @file.seek(0)
+    @file << @pos.to_s
+  end  
+end
+
+
+
 # example of the data that comes from a Tweet:
 # 
 # (text, status.author.screen_name, status.id, status.source, status.created_at, lat_s, long_s, place, url, box)
