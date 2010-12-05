@@ -97,7 +97,8 @@ class StreamWatcherListener(tweepy.StreamListener):
         lat_num = 0.0
         long_num = 0.0
      
-	# extract geo location information from the Status object
+	# extract geo location information from the bounding box info
+        # by taking the average lat and long
         if (not lat) and box and len(box) > 0:    
             for coord in box[0]:
                 print '%s, ' % coord
